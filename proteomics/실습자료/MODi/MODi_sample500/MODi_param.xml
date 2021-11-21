@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<search user="Na" title="Sample" >
+	
+	<dataset local_path="sample.mgf" format="mgf" instrument="TRAP" />	<!-- format=[mgf|pkl|dta], instrument=[QTOF|TRAP] -->
+	<database local_path="swissprot-human-reference_2013_05_with_contaminants.revCat.fasta" />
+	
+	<combined_enzyme name="Trypsin" nterm_cleave="" cterm_cleave="KR" />
+	
+	<instrument_resolution ms="low" msms="low" /> <!-- ms / msms =[high|low] -->
+	
+	<parameters>
+		<enzyme_constraint max_miss_cleavages="3" min_number_termini="2" />	
+		<isotope_error C13_number="0" />
+		<peptide_mass_tol value="3" unit="Da" /> <!-- unit=[Da|ppm] -->
+		<fragment_ion_tol value="1.0" unit="Da" /> <!-- unit=[Da] (NOT ALLOWED PPM) -->			
+		<modified_mass_range min_value="-150" max_value="250" />
+	</parameters>
+
+	<decoy_search checked="0" /> <!-- with reverse sequences -->
+	<mod_map checked="0" />
+	
+	<modifications>
+	<!-- for mod, site=[AA|N-term|C-term], position=[ANYWHERE|ANY_N(C)_TERM|PROTEIN_N(C)_TERM] -->
+		<fixed>	
+			<mod name="Carbamidomethyl" site="C" position="ANYWHERE" massdiff="57.02150" />
+			<!-- for fix mod, NOT ALLOWED a combination of site="AA" and position="ANY_N_TERM" -->
+		</fixed>
+		<variable local_path="PTMDB_s.xml" canBeModifiedOnFixedAA="1"> <!-- local_path=external ptm file path (attached), canBeModifiedOnFixedAA=[0|1] -->	
+			<!--mod name="NT+12" site="N-term" position="ANY_N_TERM" massdiff="12.00" /--> <!-- specify additional mods -->
+		</variable>
+	</modifications>
+	
+</search>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
